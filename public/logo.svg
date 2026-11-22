@@ -1,10 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
-  <rect width="120" height="120" rx="32" fill="#EFE7D4"/>
-  <g stroke="#3551A4" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <path d="M60 40 C50 33 36 32 24 35 V86 C36 83 50 84 60 91 C70 84 84 83 96 86 V35 C84 32 70 33 60 40 Z" fill="#FFFFFF"/>
-    <path d="M60 40 V91"/>
-    <path d="M36 52 l14 14 M36 66 l14 -14"/>
-    <path d="M70 55 h14 M77 48 v14"/>
-    <path d="M60 22 v-8 M46 25 l-4 -6 M74 25 l4 -6"/>
-  </g>
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="210" height="210" viewBox="0 0 210 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Logo">
+<circle id="Ellipse 1" cx="105" cy="105" r="105" fill="#C8BCF4"/>
+</g>
 </svg>
