@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useApp, Icon, Img, Back, Field, Dots } from '../ui.jsx'
 
-const Logo = ({ size = 96 }) => <img src="/logo.svg" width={size} height={size} alt="MakeTogether logo" style={{ borderRadius: size * 0.27 }} />
+const Logo = ({ size = 96 }) => <img src="logo.svg" width={size} height={size} alt="MakeTogether logo" style={{ borderRadius: size * 0.27 }} />
 
 export function Landing() {
   const { go } = useApp()
@@ -16,7 +16,7 @@ export function Landing() {
         <svg viewBox="0 0 402 90" preserveAspectRatio="none" style={{ position: 'absolute', top: -1, left: 0, width: '100%', height: 70, zIndex: 1 }}>
           <path d="M0 0 H402 V40 C330 85 260 20 190 50 C120 80 60 30 0 60 Z" fill="var(--bg)" />
         </svg>
-        <Img src="/img/landing-makerspace.jpg" icon="handyman" h="100%" style={{ position: 'absolute', inset: 0 }} />
+        <Img src="img/landing-makerspace.jpg" icon="handyman" h="100%" style={{ position: 'absolute', inset: 0 }} />
       </div>
       <div className="pad stack" style={{ '--gap': '12px', padding: '24px 24px 40px', background: 'var(--bg)' }}>
         <button className="btn btn-primary" onClick={() => go('welcome')}>Sign Up</button>
@@ -38,7 +38,7 @@ export function Welcome() {
   return (
     <div className="pad" style={{ paddingBottom: 40 }}>
       <h1 className="h1" style={{ marginTop: 8 }}>Welcome to <span className="blue">MakeTogether!</span></h1>
-      <Img src="/img/welcome-community.jpg" icon="groups" h={180} r={22} style={{ marginTop: 16 }} />
+      <Img src="img/welcome-community.jpg" icon="groups" h={180} r={22} style={{ marginTop: 16 }} />
       <div className="list" style={{ marginTop: 18 }}>
         {features.map(([icon, title, sub]) => (
           <div key={title} className="list-row" style={{ padding: '13px 16px' }}>

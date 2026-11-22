@@ -169,7 +169,7 @@ export function MenuDrawer({ onClose }) {
       <div className="scrim" onClick={onClose} />
       <aside className="drawer">
         <button className="icon-btn" style={{ position: 'absolute', top: 58, right: 12 }} onClick={onClose} aria-label="Close"><Icon name="close" /></button>
-        <img src="/logo.svg" width="48" height="48" alt="" style={{ borderRadius: 14 }} />
+        <img src="logo.svg" width="48" height="48" alt="" style={{ borderRadius: 14 }} />
         <p className="h4" style={{ margin: '12px 0 20px' }}>MakeTogether</p>
         <div className="list">
           {items.map(([icon, label, fn]) => (
