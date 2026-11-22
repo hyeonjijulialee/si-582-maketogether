@@ -29,7 +29,7 @@ export function Heart({ id, kind = 'tool', className = '' }) {
   const click = (e) => { e.stopPropagation(); openSaveSheet(kind, id) }
   const icon = kind === 'tool' ? 'favorite' : on ? 'bookmark_added' : 'bookmark_add'
   return (
-    <button className={`heart ${on ? 'on' : ''} ${className}`} onClick={click} aria-label="Save to folder">
+    <button className={`heart ${kind === 'tool' ? 'is-heart' : ''} ${on ? 'on' : ''} ${className}`} onClick={click} aria-label="Save to folder">
       <Icon name={icon} fill={on} />
     </button>
   )

@@ -4,6 +4,8 @@
   --blue-press: #2a4186;
   --blue-tint: #e6eaf5;
   --blue-30: rgba(53, 81, 164, 0.3); /* Figma variable "blue-30%" — input & search fill */
+  --lavender: #c8bcf4;              /* Figma logo & card label fill — filter chips */
+  --heart: #ff0000;                  /* Figma 'favorite' icon (Videos Page - save function) */
   --cream: #efe7d4;         /* primitive */
   --cream-soft: #f7f2e7;
   --bg: #fbf9f4;
@@ -148,7 +150,7 @@ img { display: block; }
 .chips::-webkit-scrollbar { display: none; }
 .chip {
   height: 36px; padding: 0 16px; border-radius: var(--r-pill); flex: none;
-  background: var(--cream); color: var(--ink); font: 500 14px var(--font-head);
+  background: var(--lavender); color: var(--ink); font: 500 14px var(--font-head);
   display: inline-flex; align-items: center; gap: 6px; transition: background 0.15s;
 }
 .chip.on { background: var(--blue); color: #fff; }
@@ -188,6 +190,7 @@ img { display: block; }
   background: rgba(255, 255, 255, 0.92); display: grid; place-items: center; color: var(--ink); z-index: 2;
 }
 .heart.on { color: var(--blue); }
+.heart.on.is-heart { color: var(--heart); }
 .play {
   position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
   width: 56px; height: 56px; border-radius: 50%; background: rgba(255, 255, 255, 0.92);

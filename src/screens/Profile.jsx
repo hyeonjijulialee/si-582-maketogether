@@ -153,7 +153,7 @@ export function Folders() {
       <Back label="Profile" />
       <div className="row between" style={{ marginTop: 4 }}>
         <h1 className="h1">Saved</h1>
-        <button className="chip" style={{ background: 'var(--blue-30)' }} onClick={() => setCreating(!creating)}><Icon name={creating ? 'close' : 'add'} size={20} />{creating ? 'Cancel' : 'New folder'}</button>
+        <button className="chip" onClick={() => setCreating(!creating)}><Icon name={creating ? 'close' : 'add'} size={20} />{creating ? 'Cancel' : 'New folder'}</button>
       </div>
       <p className="p4 faint">{folders.length} folders</p>
       {creating && <NewFolderForm onDone={() => setCreating(false)} />}

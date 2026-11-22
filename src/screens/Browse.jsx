@@ -249,9 +249,9 @@ export function Results({ query }) {
       <SearchHeader back />
       <div className="pad">
         <div className="row" style={{ marginTop: 4 }}>
-          <button className="chip" style={{ background: nFilters ? 'var(--blue-tint)' : 'var(--cream)', color: nFilters ? 'var(--blue)' : 'var(--ink)' }} onClick={() => setSheet(true)}>
+          <button className="chip" style={nFilters ? { background: 'var(--blue)', color: '#fff' } : undefined} onClick={() => setSheet(true)}>
             <Icon name="tune" size={20} />Filter
-            {nFilters > 0 && <span style={{ background: 'var(--blue)', color: '#fff', borderRadius: 10, minWidth: 20, height: 20, display: 'grid', placeItems: 'center', fontSize: 12 }}>{nFilters}</span>}
+            {nFilters > 0 && <span style={{ background: '#fff', color: 'var(--blue)', borderRadius: 10, minWidth: 20, height: 20, display: 'grid', placeItems: 'center', fontSize: 12 }}>{nFilters}</span>}
           </button>
           {lv.map((l) => <Tag key={l} level>{l}</Tag>)}
         </div>
