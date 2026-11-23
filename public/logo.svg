@@ -1,5 +1,13 @@
-<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="210" height="210" viewBox="0 0 210 210" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="Logo">
-<circle id="Ellipse 1" cx="105" cy="105" r="105" fill="#C8BCF4"/>
-</g>
+<svg width="210" height="210" viewBox="0 0 210 210" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Figma "Logo" (249:328): lavender circle; community mark redrawn from the team's logo image -->
+  <circle cx="105" cy="105" r="105" fill="#C8BCF4"/>
+  <g transform="translate(43 42) scale(1.55)" fill="#3551A4">
+    <circle cx="8" cy="23" r="7"/>
+    <circle cx="22" cy="9" r="7"/>
+    <circle cx="40" cy="5" r="7"/>
+    <circle cx="58" cy="9" r="7"/>
+    <circle cx="72" cy="23" r="7"/>
+    <circle cx="40" cy="31" r="9"/>
+    <path d="M1 35 Q1 55 18 55 H31 V80 H49 V55 H62 Q79 55 79 35 H70 Q70 44 61 44 H19 Q10 44 10 35 Z"/>
+  </g>
 </svg>
