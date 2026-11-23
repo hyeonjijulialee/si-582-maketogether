@@ -10,7 +10,7 @@ export function Landing() {
       <div className="center pad" style={{ paddingTop: 28 }}>
         <div style={{ display: 'flex', justifyContent: 'center' }}><Logo size={104} /></div>
         <h1 className="blue" style={{ font: '600 40px/48px var(--font-head)', marginTop: 20 }}>MakeTogether</h1>
-        <p className="p3 muted" style={{ marginTop: 8 }}>Learn new tools. Borrow with confidence.<br />Make things together.</p>
+        <p className="p4 muted" style={{ marginTop: 8, whiteSpace: 'nowrap', fontSize: 'min(16px, 4.1vw)' }}>Learn new tools. Borrow with confidence.<br />Make things together.</p>
       </div>
       <div style={{ position: 'relative', marginTop: 28, flex: 1, minHeight: 280 }}>
         <svg viewBox="0 0 402 90" preserveAspectRatio="none" style={{ position: 'absolute', top: -1, left: 0, width: '100%', height: 70, zIndex: 1 }}>
