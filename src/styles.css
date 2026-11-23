@@ -23,7 +23,8 @@
   --r-md: 16px;
   --r-lg: 22px;
   --r-pill: 999px;
-  --shadow: 0 1px 2px rgba(30, 30, 30, 0.04), 0 6px 18px rgba(53, 81, 164, 0.07);
+  --shadow: 0 1px 2px rgba(30, 30, 30, 0.05), 0 6px 18px rgba(53, 81, 164, 0.08);
+  --card-line: #e2dac8; /* soft warm edge so white cards separate from the cream page */
   --tabbar-h: 78px;
 }
 
@@ -169,7 +170,7 @@ img { display: block; }
 .tab.on { color: var(--blue); border-color: var(--blue); }
 
 /* Cards */
-.card { background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; }
+.card { background: var(--surface); border: 1px solid var(--card-line); border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; }
 .section-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
 .section-head .title { display: flex; align-items: center; gap: 10px; }
 .section-icon { width: 36px; height: 36px; border-radius: 50%; background: var(--cream); display: grid; place-items: center; color: var(--blue); }
@@ -213,7 +214,7 @@ img { display: block; }
 .tabbar .ms { font-size: 26px; }
 
 /* List rows (profile menu) */
-.list { background: var(--surface); border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; }
+.list { background: var(--surface); border: 1px solid var(--card-line); border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; }
 .list-row { display: flex; align-items: center; gap: 16px; padding: 18px 20px; width: 100%; text-align: left; }
 .list-row + .list-row { border-top: 1px solid var(--line); }
 .list-row .ms:last-child { color: var(--ink-3); }
