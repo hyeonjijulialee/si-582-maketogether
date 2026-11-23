@@ -56,7 +56,7 @@ export function Home() {
         <h2 className="h4" style={{ margin: '26px 0 12px' }}>Tool Categories</h2>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
           {homeCats.map((c) => <CategoryTile key={c.id} c={c} onClick={() => go(`results?cat=${c.id}`)} />)}
-          <button className="card" onClick={() => go('catalog')} style={{ height: 120, display: 'grid', placeItems: 'center', background: 'var(--lavender)' }}>
+          <button className="card" onClick={() => go('catalog')} style={{ height: 120, display: 'grid', placeItems: 'center' }}>
             <span style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6 }} className="blue">
               <Icon name="apps" size={32} /><span className="h6">More</span>
             </span>
