@@ -257,7 +257,7 @@ export function Results({ query }) {
         </div>
         <div className="row between" style={{ margin: '18px 0 14px' }}>
           <h1 className="h2">{title} <span className="p4 faint">({list.length})</span></h1>
-          <label className="chip" style={{ background: 'var(--surface)', border: '1px solid var(--line)', position: 'relative' }}>
+          <label className="chip" style={{ position: 'relative' }}>
             Sort by<Icon name="expand_more" size={20} />
             <select value={sort} onChange={(e) => setSort(e.target.value)} style={{ position: 'absolute', inset: 0, opacity: 0 }} aria-label="Sort by">
               {['Relevance', 'A–Z', 'Level'].map((s) => <option key={s}>{s}</option>)}

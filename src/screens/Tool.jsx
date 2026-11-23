@@ -107,7 +107,7 @@ export function VideoList({ arg }) {
       <div className="pad">
         <div className="row between" style={{ margin: '6px 0 16px' }}>
           <h1 className="h2 row"><Icon name="smart_display" className="blue" />Videos <span className="p4 faint">({list.length})</span></h1>
-          <label className="chip" style={{ background: 'var(--surface)', border: '1px solid var(--line)', position: 'relative' }}>
+          <label className="chip" style={{ position: 'relative' }}>
             Sort by<Icon name="expand_more" size={20} />
             <select value={sort} onChange={(e) => setSort(e.target.value)} style={{ position: 'absolute', inset: 0, opacity: 0 }} aria-label="Sort by">
               {['Recommended', 'Shortest'].map((s) => <option key={s}>{s}</option>)}

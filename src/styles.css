@@ -4,7 +4,7 @@
   --blue-press: #2a4186;
   --blue-tint: #e6eaf5;
   --blue-30: rgba(53, 81, 164, 0.3); /* Figma variable "blue-30%" — input & search fill */
-  --lavender: #c8bcf4;              /* Figma logo & card label fill — filter chips */
+  --lavender: #c8bcf4;              /* Figma logo fill — icon circles & soft fills */
   --heart: #ff0000;                  /* Figma 'favorite' icon (Videos Page - save function) */
   --cream: #efe7d4;         /* Figma primitive — no longer used for lines/bubbles (lavender instead) */
   --bg: #ffffff;            /* app background is always white */
@@ -150,16 +150,16 @@ img { display: block; }
 .chips::-webkit-scrollbar { display: none; }
 .chip {
   height: 36px; padding: 0 16px; border-radius: var(--r-pill); flex: none;
-  background: var(--lavender); color: var(--ink); font: 500 14px var(--font-head);
+  background: var(--surface); border: 1.5px solid var(--blue); color: var(--blue); font: 500 14px var(--font-head);
   display: inline-flex; align-items: center; gap: 6px; transition: background 0.15s;
 }
-.chip.on { background: var(--blue); color: #fff; }
+.chip.on { background: var(--blue); border-color: var(--blue); color: #fff; }
 .tag {
   display: inline-flex; align-items: center; gap: 4px; height: 26px; padding: 0 10px;
   border-radius: var(--r-pill); font: 600 12px var(--font-head); letter-spacing: 0.015em;
-  background: var(--lavender); color: var(--ink);
+  background: var(--surface); border: 1px solid var(--blue); color: var(--blue);
 }
-.tag.level { background: var(--blue-tint); color: var(--blue); }
+.tag.level { font-weight: 700; }
 .tag .ms { font-size: 15px; }
 
 /* Tabs (Getting Started / Common Issues / Specific Functions) */
@@ -263,7 +263,7 @@ a.btn { text-decoration: none; }
 .type-badge .ms { font-size: 15px; }
 .type-tool { background: var(--blue); color: #fff; }
 .type-video { background: #1f2433; color: #fff; }
-.type-article { background: var(--lavender); color: #2e2470; }
+.type-article { background: var(--surface); border: 1px solid var(--blue); color: var(--blue); }
 .type-ink-tool { color: var(--blue); }
 .type-ink-video { color: #1f2433; }
-.type-ink-article { color: #6f5bd6; }
+.type-ink-article { color: var(--blue); }
