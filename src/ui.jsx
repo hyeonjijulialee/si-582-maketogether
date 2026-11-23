@@ -12,7 +12,7 @@ export const Icon = ({ name, fill, size, className = '', style }) => (
   <span className={`ms ${fill ? 'fill' : ''} ${className}`} style={size ? { fontSize: size, ...style } : style} aria-hidden="true">{name}</span>
 )
 
-// Photo slot: shows /public/img file when present, otherwise a cream placeholder with an icon.
+// Photo slot: shows /public/img file when present, otherwise a lavender placeholder with an icon.
 export function Img({ src, icon = 'image', h, w, r, className = '', children, style }) {
   const [ok, setOk] = useState(true)
   return (
