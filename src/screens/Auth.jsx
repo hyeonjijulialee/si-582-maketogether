@@ -39,9 +39,9 @@ export function Welcome() {
     <div className="pad" style={{ paddingBottom: 40 }}>
       <h1 className="h1" style={{ marginTop: 8 }}>Welcome to <span className="blue">MakeTogether!</span></h1>
       <Img src="img/welcome-community.jpg" icon="groups" h={180} r={22} style={{ marginTop: 16 }} />
-      <div className="list" style={{ marginTop: 18 }}>
+      <div className="stack" style={{ marginTop: 18, '--gap': '10px' }}>
         {features.map(([icon, title, sub]) => (
-          <div key={title} className="list-row" style={{ padding: '13px 16px' }}>
+          <div key={title} className="row" style={{ gap: 14, padding: '10px 14px', background: 'var(--surface)', border: '1.5px solid var(--lavender)', borderRadius: 18 }}>
             <span className="section-icon"><Icon name={icon} /></span>
             <div className="grow"><p className="h6">{title}</p><p className="p6 faint">{sub}</p></div>
           </div>
@@ -107,7 +107,7 @@ export function Forgot() {
     <div className="pad" style={{ paddingBottom: 40 }}>
       <Back />
       <div className="center" style={{ marginTop: 28 }}>
-        <div style={{ width: 132, height: 132, borderRadius: '50%', background: 'var(--cream)', margin: '0 auto', display: 'grid', placeItems: 'center' }}>
+        <div style={{ width: 132, height: 132, borderRadius: '50%', background: 'var(--lavender)', margin: '0 auto', display: 'grid', placeItems: 'center' }}>
           <Icon name={sent ? 'mark_email_read' : 'lock_reset'} size={64} className="blue" />
         </div>
         <h1 className="h1" style={{ marginTop: 24 }}>{sent ? 'Check Your Email' : 'Forgot Password'}</h1>
