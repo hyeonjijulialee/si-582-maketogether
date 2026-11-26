@@ -16,7 +16,7 @@
   --danger: #c0392b;
 
   --font-head: 'Google Sans Flex', system-ui, sans-serif;
-  --font-body: 'Work Sans', system-ui, sans-serif;
+  --font-body: 'Google Sans Flex', system-ui, sans-serif; /* matches Figma Paragraph styles + Video Page */
 
   --r-sm: 10px;
   --r-md: 16px;
@@ -24,7 +24,7 @@
   --r-pill: 999px;
   --shadow: 0 1px 2px rgba(30, 30, 30, 0.05), 0 6px 18px rgba(53, 81, 164, 0.08);
   --card-line: #dcd4f6; /* soft lavender edge so white cards separate from the page */
-  --tabbar-h: 78px;
+  --tabbar-h: 100px;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,15 +68,7 @@ img { display: block; }
 @media (max-width: 500px) {
   .stage { padding: 0; place-items: stretch; }
   .device { width: 100%; height: 100dvh; border-radius: 0; box-shadow: none; }
-  .statusbar { display: none !important; }
 }
-.statusbar {
-  height: 54px; flex: none; display: flex; align-items: center; justify-content: space-between;
-  padding: 8px 30px 0 36px; font: 600 16px var(--font-head); z-index: 5;
-}
-.statusbar .icons { display: flex; gap: 6px; align-items: center; }
-.statusbar .icons .ms { font-size: 19px; }
-.statusbar.on-image { position: absolute; top: 0; left: 0; right: 0; color: #fff; }
 .home-indicator {
   position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%);
   width: 140px; height: 5px; border-radius: 3px; background: #111; z-index: 20; pointer-events: none;
@@ -206,11 +198,11 @@ img { display: block; }
 .tabbar {
   position: absolute; left: 0; right: 0; bottom: 0; height: var(--tabbar-h); z-index: 10;
   background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(10px); border-top: 1px solid var(--line);
-  display: flex; justify-content: space-around; padding: 8px 8px 18px;
+  display: flex; justify-content: space-around; padding: 10px 10px 20px;
 }
-.tabbar button { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--ink-3); font: 600 12px var(--font-head); letter-spacing: 0.04em; }
+.tabbar button { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--ink); font: 600 16px var(--font-head); letter-spacing: 0.02em; text-transform: uppercase; }
 .tabbar button.on { color: var(--blue); }
-.tabbar .ms { font-size: 26px; }
+.tabbar .ms { font-size: 30px; }
 
 /* List rows (profile menu) */
 .list { background: var(--surface); border: 1px solid var(--card-line); border-radius: var(--r-lg); box-shadow: var(--shadow); overflow: hidden; }
@@ -228,11 +220,6 @@ img { display: block; }
 }
 @keyframes up { from { transform: translateY(100%); } }
 .grabber { width: 40px; height: 5px; border-radius: 3px; background: var(--lavender); margin: 10px auto 4px; }
-.drawer {
-  position: absolute; top: 0; bottom: 0; right: 0; width: 78%; z-index: 31; background: var(--bg);
-  padding: 70px 20px 20px; animation: slide 0.25s ease-out; box-shadow: -10px 0 30px rgba(0, 0, 0, 0.12);
-}
-@keyframes slide { from { transform: translateX(100%); } }
 .toast {
   position: absolute; left: 20px; right: 20px; top: 58px; z-index: 40; /* top so it never covers sheets or the tab bar */
   background: #1f2433; color: #fff; padding: 14px 16px; border-radius: 14px; font: 500 14px var(--font-head);
@@ -246,7 +233,7 @@ img { display: block; }
 .checkbox .ms { font-size: 18px; }
 .notice { background: var(--lavender); border-radius: 14px; padding: 12px 14px; display: flex; gap: 10px; align-items: center; font: 400 14px/21px var(--font-body); }
 .notice .ms { color: var(--blue); }
-.avatar { border-radius: 50%; background: var(--lavender); color: var(--blue); display: grid; place-items: center; font-family: var(--font-head); font-weight: 600; flex: none; }
+.avatar { position: relative; overflow: hidden; border-radius: 50%; background: var(--lavender); color: var(--blue); display: grid; place-items: center; font-family: var(--font-head); font-weight: 600; flex: none; }
 .divider { display: flex; align-items: center; gap: 12px; color: var(--ink-3); font: 400 14px var(--font-body); }
 .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--line); }
 .heart.static-heart { position: static; width: 44px; height: 44px; background: var(--lavender); flex: none; }
@@ -267,3 +254,7 @@ a.btn { text-decoration: none; }
 .type-ink-tool { color: var(--blue); }
 .type-ink-video { color: #1f2433; }
 .type-ink-article { color: var(--blue); }
+
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+.btn:disabled { opacity: 0.45; cursor: default; }
+.field-error { color: var(--danger); font: 400 13px/18px var(--font-body); margin-top: 6px; }

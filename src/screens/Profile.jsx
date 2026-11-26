@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
-import { useApp, Icon, Img, Back, BorrowButton, Dots, Tag, countLabel, TypeBadge, TypeCounts, TYPES, KINDS } from '../ui.jsx'
-import { user, tools, videos, articles, libraries, byId } from '../data.js'
+import React, { useRef, useState } from 'react'
+import { useApp, Icon, Img, Back, Field, BorrowButton, Dots, Tag, countLabel, TypeBadge, TypeCounts, TYPES, KINDS } from '../ui.jsx'
+import { tools, videos, articles, libraries, byId } from '../data.js'
 
 export function Profile() {
-  const { go, library, toast } = useApp()
+  const { go, library, toast, profile } = useApp()
   const lib = byId(libraries, library)
   const rows = [
+    ['edit', 'Edit Profile', null, () => go('editprofile')],
     ['local_library', 'My Library Location', lib ? lib.name : 'Not selected', () => go('library')],
-    ['history', 'Recently Viewed', null, () => go('recent')],
     ['folder', 'Saved Folders', 'Tools, videos and articles', () => go('saved')],
     ['settings', 'Settings', null, () => toast('Settings are out of scope for this prototype')],
   ]
@@ -15,9 +15,11 @@ export function Profile() {
     <div className="pad">
       <h1 className="h1" style={{ marginTop: 10 }}>My Profile</h1>
       <div className="center" style={{ margin: '22px 0 26px' }}>
-        <div className="avatar" style={{ width: 104, height: 104, fontSize: 38, margin: '0 auto' }}>{user.initials}</div>
-        <p className="h3" style={{ marginTop: 14 }}>{user.name}</p>
-        <p className="p4 faint">{user.email}</p>
+        <div className="avatar" style={{ width: 104, height: 104, fontSize: 38, margin: '0 auto' }}>
+          {profile.photo ? <img src={profile.photo} alt="" /> : profile.initials}
+        </div>
+        <p className="h3" style={{ marginTop: 14 }}>{profile.name}</p>
+        <p className="p4 faint">{profile.email}</p>
       </div>
       <div className="list">
         {rows.map(([icon, label, sub, fn]) => (
@@ -34,6 +36,68 @@ export function Profile() {
       <p className="p6 faint center" style={{ marginTop: 26 }}>MakeTogether · Student prototype</p>
       <div className="bottom-space" />
     </div>
+  )
+}
+
+// Edit Profile — change profile image, name and password (front-end only, nothing is sent anywhere).
+export function EditProfile() {
+  const { profile, updateProfile, toast, back } = useApp()
+  const [name, setName] = useState(profile.name)
+  const [photo, setPhoto] = useState(profile.photo || null)
+  const [current, setCurrent] = useState('')
+  const [next, setNext] = useState('')
+  const [confirm, setConfirm] = useState('')
+  const fileRef = useRef(null)
+
+  const initials = name.trim().split(/\s+/).filter(Boolean).map((w, i, a) => (i === 0 || i === a.length - 1) ? w[0] : '').join('').toUpperCase() || profile.initials
+  const changingPw = !!(current || next || confirm)
+  const pwError = !changingPw ? null
+    : !current ? 'Enter your current password.'
+    : next.length < 8 ? 'New password must be at least 8 characters.'
+    : next !== confirm ? 'New passwords do not match.'
+    : null
+  const valid = name.trim() && !pwError
+
+  const pickPhoto = (e) => {
+    const f = e.target.files && e.target.files[0]
+    if (f) setPhoto(URL.createObjectURL(f))
+  }
+  const save = (e) => {
+    e.preventDefault()
+    if (!valid) return
+    const first = name.trim().split(/\s+/)[0]
+    updateProfile({ name: name.trim(), first, initials, photo })
+    toast(changingPw ? 'Profile and password updated' : 'Profile updated')
+    back()
+  }
+
+  return (
+    <form className="pad" onSubmit={save}>
+      <Back label="Profile" />
+      <h1 className="h1" style={{ marginTop: 4 }}>Edit Profile</h1>
+
+      <div className="center" style={{ margin: '20px 0 22px' }}>
+        <div className="avatar" style={{ width: 104, height: 104, fontSize: 38, margin: '0 auto' }}>
+          {photo ? <img src={photo} alt="" /> : initials}
+        </div>
+        <input ref={fileRef} type="file" accept="image/*" hidden onChange={pickPhoto} />
+        <button type="button" className="btn btn-outline btn-xs" style={{ width: 'auto', padding: '0 16px', marginTop: 12 }} onClick={() => fileRef.current && fileRef.current.click()}>
+          <Icon name="photo_camera" size={20} />Change photo
+        </button>
+        {photo && <p><button type="button" className="link" style={{ fontSize: 14, marginTop: 8 }} onClick={() => setPhoto(null)}>Remove photo</button></p>}
+      </div>
+
+      <div className="stack" style={{ '--gap': '16px' }}>
+        <Field label="Name" icon="person" placeholder="Your name" value={name} onChange={setName} />
+        <Field label="Current Password" icon="lock" type="password" placeholder="Enter current password" value={current} onChange={setCurrent} />
+        <Field label="New Password" icon="lock" type="password" placeholder="Create a new password" value={next} onChange={setNext} />
+        <Field label="Confirm New Password" icon="lock" type="password" placeholder="Re-enter new password" value={confirm} onChange={setConfirm} />
+      </div>
+      {pwError && <p className="field-error">{pwError}</p>}
+
+      <button className="btn btn-primary" style={{ marginTop: 26 }} disabled={!valid}>Save changes</button>
+      <div className="bottom-space" />
+    </form>
   )
 }
 

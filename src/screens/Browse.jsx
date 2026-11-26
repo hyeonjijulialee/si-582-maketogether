@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import { useApp, Portal, Icon, Img, Back, SearchHeader, SectionHead, VideoCard, ToolGridCard, Tag } from '../ui.jsx'
-import { user, categories, tools, videos, guides, suggestions, recentSearches, levels, byId } from '../data.js'
+import { categories, tools, videos, guides, suggestions, recentSearches, levels, byId } from '../data.js'
 
 function CategoryTile({ c, onClick, h = 120 }) {
   return (
@@ -38,16 +38,15 @@ function GuideCard({ g, onClick }) {
 }
 
 export function Home() {
-  const { go, openMenu } = useApp()
+  const { go, profile } = useApp()
   const homeCats = ['3d-printer', 'laser-cutter', 'sewing', 'board-games', 'projector'].map((id) => byId(categories, id))
   return (
     <div>
       <div className="topbar" style={{ paddingTop: 4 }}>
         <div className="grow" style={{ paddingLeft: 8 }}>
           <p className="label blue">MakeTogether</p>
-          <h1 className="h1">Hi, {user.first}!</h1>
+          <h1 className="h1">Hi, {profile.first}!</h1>
         </div>
-        <button className="icon-btn" onClick={openMenu} aria-label="Menu"><Icon name="menu" size={28} /></button>
       </div>
       <div className="pad">
         <p className="p4 muted" style={{ marginTop: -6 }}>What do you want to make today?</p>

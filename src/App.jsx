@@ -2,19 +2,20 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { Landing, SignUp, LogIn, Forgot, Welcome } from './screens/Auth.jsx'
 import { Home, Catalog, Search, Results } from './screens/Browse.jsx'
 import { ToolDetail, VideoList, VideoPlayer } from './screens/Tool.jsx'
-import { Profile, LibraryLocation, RecentlyViewed, Folders, FolderDetail } from './screens/Profile.jsx'
-import { Ctx, Icon, TabBar, MenuDrawer, SaveToFolderSheet } from './ui.jsx'
+import { Profile, EditProfile, LibraryLocation, RecentlyViewed, Folders, FolderDetail } from './screens/Profile.jsx'
+import { Ctx, Icon, TabBar, SaveToFolderSheet } from './ui.jsx'
+import { user } from './data.js'
 
 // Hash routes: #/name/arg?query — keeps browser back + shareable links working.
 const SCREENS = {
   landing: Landing, signup: SignUp, login: LogIn, forgot: Forgot, welcome: Welcome,
   home: Home, catalog: Catalog, search: Search, results: Results,
   tool: ToolDetail, videos: VideoList, video: VideoPlayer,
-  profile: Profile, library: LibraryLocation, saved: Folders, recent: RecentlyViewed,
+  profile: Profile, editprofile: EditProfile, library: LibraryLocation, saved: Folders, recent: RecentlyViewed,
   folder: FolderDetail,
 }
 const AUTH = new Set(['landing', 'signup', 'login', 'forgot', 'welcome'])
-const PROFILE_TAB = new Set(['profile', 'library', 'saved', 'recent', 'folder'])
+const PROFILE_TAB = new Set(['profile', 'editprofile', 'library', 'saved', 'recent', 'folder'])
 
 function parse(hash) {
   const [path, qs = ''] = hash.replace(/^#\/?/, '').split('?')
@@ -35,10 +36,10 @@ export default function App() {
   const [recent, setRecent] = useState(['acoustic-guitar', 'sewing-machine'])
   const [library, setLibrary] = useState('downtown')
   const [toastMsg, setToastMsg] = useState(null)
-  const [menu, setMenu] = useState(false)
+  const [profile, setProfile] = useState(user) // editable on the Edit Profile screen (name, photo)
 
   useEffect(() => {
-    const on = () => { setRoute(parse(location.hash)); setMenu(false); setSaveFor(null) }
+    const on = () => { setRoute(parse(location.hash)); setSaveFor(null) }
     addEventListener('hashchange', on)
     return () => removeEventListener('hashchange', on)
   }, [])
@@ -69,7 +70,7 @@ export default function App() {
     recent, view: (id) => setRecent((r) => [id, ...r.filter((x) => x !== id)].slice(0, 6)),
     library, setLibrary,
     toast: setToastMsg,
-    openMenu: () => setMenu(true),
+    profile, updateProfile: (patch) => setProfile((p) => ({ ...p, ...patch })),
   }
 
   const Screen = SCREENS[route.name]
@@ -79,15 +80,10 @@ export default function App() {
     <Ctx.Provider value={app}>
       <div className="stage">
         <div className="device">
-          <div className="statusbar">
-            <span>9:41</span>
-            <span className="icons"><Icon name="signal_cellular_alt" fill /><Icon name="wifi" fill /><Icon name="battery_full" fill /></span>
-          </div>
           <div className="screen screen-enter" key={route.id}>
             <Screen {...route} />
           </div>
           {!AUTH.has(route.name) && !route.query.onboarding && <TabBar active={tab} />}
-          {menu && <MenuDrawer onClose={() => setMenu(false)} />}
           {saveFor && <SaveToFolderSheet item={saveFor} onClose={() => setSaveFor(null)} />}
           {toastMsg && <div className="toast"><Icon name="info" />{toastMsg}</div>}
           <div className="home-indicator" />

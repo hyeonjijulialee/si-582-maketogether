@@ -126,14 +126,13 @@ export const Back = ({ label = 'Back', onClick }) => {
   return <button className="back" onClick={onClick || back}><Icon name="arrow_back_ios_new" size={20} />{label}</button>
 }
 
-// Search pill + menu — shared header from the base hi-fi wireframes
+// Search pill — shared header from the base hi-fi wireframes
 export function SearchHeader({ back = false }) {
-  const { go, openMenu } = useApp()
+  const { go } = useApp()
   return (
     <>
       <div className="topbar">
         <button className="searchbar" onClick={() => go('search')}><Icon name="search" />Search for tools or guides</button>
-        <button className="icon-btn" onClick={openMenu} aria-label="Menu"><Icon name="menu" size={28} /></button>
       </div>
       {back && <div className="pad"><Back /></div>}
     </>
@@ -151,33 +150,6 @@ export function TabBar({ active }) {
         </button>
       ))}
     </nav>
-  )
-}
-
-export function MenuDrawer({ onClose }) {
-  const { go, toast } = useApp()
-  const items = [
-    ['home', 'Home', () => go('home')],
-    ['menu_book', 'Catalog', () => go('catalog')],
-    ['folder', 'Saved Folders', () => go('saved')],
-    ['local_library', 'My Library Location', () => go('library')],
-    ['help', 'Help', () => { onClose(); toast('Help center is out of scope for this prototype') }],
-    ['logout', 'Sign Out', () => go('landing')],
-  ]
-  return (
-    <>
-      <div className="scrim" onClick={onClose} />
-      <aside className="drawer">
-        <button className="icon-btn" style={{ position: 'absolute', top: 58, right: 12 }} onClick={onClose} aria-label="Close"><Icon name="close" /></button>
-        <img src="logo.svg" width="48" height="48" alt="" style={{ borderRadius: 14 }} />
-        <p className="h4" style={{ margin: '12px 0 20px' }}>MakeTogether</p>
-        <div className="list">
-          {items.map(([icon, label, fn]) => (
-            <button key={label} className="list-row" onClick={fn}><Icon name={icon} className="blue" /><span className="p4 grow">{label}</span></button>
-          ))}
-        </div>
-      </aside>
-    </>
   )
 }
 
